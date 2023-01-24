@@ -38,7 +38,7 @@ description
 
 class Images(models.Model):
     Product = models.ForeignKey(Product,verbose_name=_('product'),related_name='product_image',on_delete=models.CASCADE)
-    img=models.models.ImageField(_('image'),upload_to='product_images/', height_field=None, width_field=None, max_length=None)
+    img=models.ImageField(_('image'),upload_to='product_images/', height_field=None, width_field=None, max_length=None)
 
     def __str__(self):
         return str(self.Product)
@@ -49,9 +49,9 @@ product: foreignkey
 
 class Reviews(models.Model):
     Product = models.ForeignKey(Product,verbose_name=_('product'),related_name='product_review',on_delete=models.CASCADE)
-    user= models.ForeignKey(User,verbose_name=_('user'),relateed_name='review_author',on_delete=models.SET_NULL , null=True, blank=True) # um die reviews nicht zu löchen falls den User gelöscht ist
+    user= models.ForeignKey(User,verbose_name=_('user'),related_name='review_author',on_delete=models.SET_NULL , null=True, blank=True) # um die reviews nicht zu löchen falls den User gelöscht ist
     comment = models.CharField(_('comment'),max_length=200)
-    rate = models.models.IntegerField(_("rate"))
+    rate = models.IntegerField(_("rate"))
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
@@ -66,7 +66,7 @@ product
 
 class Brand(models.Model):
     name =models.CharField(_('brand'),max_length=30)
-    img=models.models.ImageField(_('image'),upload_to='product_images/', height_field=None, width_field=None, max_length=None)
+    img=models.ImageField(_('image'),upload_to='product_images/', height_field=None, width_field=None, max_length=None)
 
     def __str__(self):
         return self.name
