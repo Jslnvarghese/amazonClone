@@ -3,6 +3,8 @@ from django.db import models
 from taggit.managers import TaggableManager
 from django.utils.translation import gettext_lazy as _ #as _ , um es als _ zu benutzen
 from django.contrib.auth.models import User # um den default User zu importieren und weiter nutzen
+from django.utils.text import slugify
+
 
 PRODUCT_FLAG ={
     ('Sale','Sales'),
@@ -24,6 +26,9 @@ class Product(models.Model):
     slug = models.SlugField(null=True,blank=True) # um ein link mit dem Title übereinzustimmen also derselbe Name
     def __str__ (self):
         return self.name
+    def save (self, *args, **kwargs):
+        self.slug =slugify(self.name)
+        super(Product,self).save(*args , **kwargs)
 '''
 name 
 flag
