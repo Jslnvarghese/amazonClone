@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'product',
     "taggit",
     'django_extensions',
+    'orders',
 ]
 
 MIDDLEWARE = [
