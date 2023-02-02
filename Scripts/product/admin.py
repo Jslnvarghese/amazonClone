@@ -8,10 +8,11 @@ class ProductImagesAdmin(admin.TabularInline):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display =['name','brand','price']
+    list_display =['id','name','brand','price']
     list_filter = ['brand','price']
     inlines = [ProductImagesAdmin]
     search_fields = ['name','price']
+    list_editable=['name','price','brand']
 
 
 class ReviewAdmin(admin.ModelAdmin):
