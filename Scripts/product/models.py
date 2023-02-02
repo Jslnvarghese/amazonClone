@@ -24,6 +24,7 @@ class Product(models.Model):
     subtitle = models.TextField(_('subtitle'),max_length=500)
     description = models.TextField(_('description'),max_length=200)
     slug = models.SlugField(null=True,blank=True) # um ein link mit dem Title übereinzustimmen also derselbe Name
+    quantitiy =models.IntegerField(default=1)
     def __str__ (self):
         return self.name
     def save (self, *args, **kwargs):
